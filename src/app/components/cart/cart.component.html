@@ -1,0 +1,51 @@
+<section class="bg-main-light2 rounded-4 shadow p-4 my-4 container">
+
+    <div class="d-flex align-items-center justify-content-between">
+        <h1 class="h2 ">shop cart</h1>
+
+    <button (click)="clearItems()" class="btn btn-outline-danger btn-sm ">clear cart</button>
+    </div>
+
+
+
+    <p class="h4">total cart price : {{cartItem.totalCartPrice |currency:'GBP'}} </p>
+
+
+
+    @for (item of cartItem.products; track item.product.id) 
+    {
+        <div class="row mb-2 border">
+            <div class="col-md-2">
+                <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+            </div>
+    
+            <div class="col-md-10 d-flex align-items-center justify-content-between">
+                <div>
+                    <h3 class="">
+                        {{item.product.title}}
+                    </h3>
+
+                    <p class="text-main">
+                        price: {{item.price}}
+                    </p>
+
+
+
+
+                    <button (click)="removeItem(item.product.id)" class="text-danger btn p-0"><i class="fa-solid fa-trash fa-2xl"></i></button>
+
+
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <span (click)="updateCount(item.product.id , item.count + 1)" class="cr"><i class="fa-solid fa-circle-plus fa-2xl text-main"></i></span>
+                    <span> {{item.count}} </span>
+                    <span (click)="updateCount(item.product.id , item.count - 1)" class="cr text-main"><i class="fa-solid fa-circle-minus fa-2xl "></i></span>
+                </div>
+            </div>
+        </div>
+    }
+    
+
+    <button [routerLink]="['/orders' ,cartItem._id]" class="btn btn-main mt-2">orderes</button>
+</section>

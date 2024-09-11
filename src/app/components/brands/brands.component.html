@@ -1,0 +1,25 @@
+<section>
+    <h2 class="text-center py-4 text-main">All Brands</h2>
+
+    <div class="row g-3 p-4">
+        @for (Brands of BrandsList.slice(0,18) ; track Brands._id) 
+        {
+            <div class="col-md-4">
+                <div class="product p-2 card h-100">
+                    <img [src]="Brands.image" class="w-100 h-100" [alt]="Brands.name">
+                    <h3 class="text-main text-center">{{Brands.name}}</h3>
+                
+    
+    
+                  
+                </div>
+            </div>
+        }
+    </div>
+</section> 
+
+
+
+
+
+

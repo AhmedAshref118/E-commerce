@@ -1,0 +1,42 @@
+
+<h2 class="text-main text-center py-4 h1">details product</h2>
+
+@if (detailsProduct) 
+{
+    <section>
+        <div class="row align-items-center p-4">
+            <div class="col-md-3">
+            <div>
+                <img [src]="detailsProduct.imageCover" class="w-100" [alt]="detailsProduct.title">
+            </div>
+            </div>
+            <div class="col-md-9">
+                <div >
+                <h2> {{detailsProduct.title}} </h2>
+                <p class="text-muted"> {{detailsProduct.description}} </p>
+                <h3 class="h5"> {{detailsProduct.category.name}} </h3>
+    
+    
+                <div class="d-flex justify-content-between align-content-center">
+        
+                    <span> {{detailsProduct.price}} EGP</span>
+                    <div>
+                        <span><i class="fas fa-star rating-color"></i></span>
+    
+                        <span class="text-muted"> {{detailsProduct.ratingsAverage}} </span>
+                    
+                </div>
+    
+                
+                
+                </div>
+                <button class="btn-main w-100">+add to cart</button>
+                </div>
+            </div>
+        </div>
+                
+        
+            </section>
+}
+
+

@@ -1,0 +1,76 @@
+
+
+<form [formGroup]="loginForm" (ngSubmit)="registerSubmit()">
+  
+
+    <div class="my-3">
+        <label for="email">email</label>
+        <input [ngClass]="{
+            'is-valid': !loginForm.get('email')?.errors &&  loginForm.get('email')?.touched ,
+            'is-invalid': loginForm.get('email')?.errors && loginForm.get('email')?.touched
+        }"
+        
+            id="email" type="email" class="form-control" formControlName="email" >
+
+        @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched)
+        {
+            <div class="alert alert-danger w-50">
+                @if (loginForm.get('email')?.getError('required')) 
+                {
+                    <p>Email required</p>
+                }
+                @else if (loginForm.get('email')?.getError('email')) 
+                {
+                    <p>Enter Valid Email </p> 
+                }
+            </div>
+        }
+    </div>
+
+
+    <div class="my-3">
+        <label for="password">password</label>
+        <input [ngClass]="{
+            'is-valid': !loginForm.get('password')?.errors &&  loginForm.get('password')?.touched ,
+            'is-invalid': loginForm.get('password')?.errors && loginForm.get('password')?.touched
+        }"
+        
+        id="password" type="password" class="form-control" formControlName="password">
+
+        @if (loginForm.get('password')?.errors && loginForm.get('password')?.touched)
+        {
+            <div class="alert alert-danger w-50">
+                @if (loginForm.get('password')?.getError('required')) 
+                {
+                    <p>password required</p>
+                }
+                @else if (loginForm.get('password')?.getError('pattern')) 
+                {
+                    <p>Enter Valid password </p> 
+                }
+            </div>
+        }
+    </div>
+
+
+  
+    <a routerLink="/forget" class="link-primary ">forget password</a>
+ 
+
+    
+    <button   [disabled]="loginForm.invalid || isLoding"  type="submit"  class="btn-main ms-auto d-block  ">login 
+        @if (isLoding)
+            {
+            <span><i class="fas fa-spin-pulse fa-spinner "></i></span>
+            }
+    </button>
+
+@if (msgError) 
+{
+
+<p class="alert alert-danger w-50 m-0">
+    {{msgError}}
+</p>
+}
+
+</form> 

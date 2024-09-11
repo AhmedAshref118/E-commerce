@@ -1,0 +1,45 @@
+<section>
+
+    <h2 class="text-center py-4 text-main">All product</h2>
+
+
+
+    <input type="search" placeholder="Search by name ......" class="form-control  w-75 mx-auto my-4">
+
+
+    
+    <div class="row g-3 p-4 ">
+        @for (product of productsList|search:text; track product.id) 
+        {
+            <div class="col-md-3">
+                <div class="product p-2 " >
+                    <div [routerLink]="['/details' , product.id]" >
+                        <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+                    <h3 class="small text-main">{{product.category.name}}</h3>
+                    <h4 class="h6"> {{product.title.split(" " , 2).join(" ") }} </h4>
+    
+    
+                    <div class="d-flex justify-content-between align-content-center">
+    
+                        <span> {{product.price}} EGP</span>
+                        <div>
+                            <span><i class="fas fa-star rating-color"></i></span>
+    
+                            <span class="text-muted"> {{product.ratingsAverage}} </span>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <button class="btn-main w-100" (click)="addCart(product.id)">add to cart</button>
+                </div>
+            </div>
+        }
+    </div>
+</section> 
+
+
+
+
+
+
